@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Aggregated Capacities PoC</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h1, h2 { color: #333; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f2f2f2; }
+  </style>
+</head>
+<body>
+  <h1>Aggregated Capacities</h1>
+  <div id="content">Loading data...</div>
+
+  <script>
+    // Use the raw file URL for the JSON data
+    const jsonUrl = 'https://raw.githubusercontent.com/frizensami/activesg-capacities/main/aggregated_capacities.json';
+
+    // Fetch and process the JSON
+    fetch(jsonUrl)
+      .then(response => response.json())
+      .then(data => displayData(data))
+      .catch(error => {
+        document.getElementById('content').textContent = 'Error loading data: ' + error;
+      });
+
+    function displayData(data) {
+      const contentDiv = document.getElementById('content');
+      contentDiv.innerHTML = ''; // Clear loading message
+
+      // Iterate over each location in the aggregated data
+      for (const location in data.data) {
+        const locDiv = document.createElement('div');
+        const locHeader = document.createElement('h2');
+        locHeader.textContent = location;
+        locDiv.appendChild(locHeader);
+
+        // Create a table for this location's data
+        const table = document.createElement('table');
+
+        // Build table header
+        const thead = document.createElement('thead');
+        const headerRow = document.createElement('tr');
+        const headers = ['Date', 'Average Capacity', 'Entry Count', 'Raw Entries Count'];
+        headers.forEach(text => {
+          const th = document.createElement('th');
+          th.textContent = text;
+          headerRow.appendChild(th);
+        });
+        thead.appendChild(headerRow);
+        table.appendChild(thead);
+
+        const tbody = document.createElement('tbody');
+        const locationData = data.data[location];
+
+        // For each date, either display the summarized data or compute on the fly from raw entries.
+        for (const date in locationData) {
+          const row = document.createElement('tr');
+
+          // Date cell
+          const tdDate = document.createElement('td');
+          tdDate.textContent = date;
+          row.appendChild(tdDate);
+
+          const cell = locationData[date];
+
+          if (Array.isArray(cell)) {
+            // If raw entries are still available, calculate the average for display.
+            const numericCaps = cell.filter(entry => typeof entry.capacity === 'number')
+                                     .map(entry => entry.capacity);
+            const avg = numericCaps.length
+                        ? (numericCaps.reduce((a, b) => a + b, 0) / numericCaps.length).toFixed(2)
+                        : 'N/A';
+            const tdAvg = document.createElement('td');
+            tdAvg.textContent = avg;
+            row.appendChild(tdAvg);
+
+            // Since it hasn't been summarized yet, entry count will be N/A
+            const tdSumm = document.createElement('td');
+            tdSumm.textContent = 'N/A';
+            row.appendChild(tdSumm);
+
+            const tdRaw = document.createElement('td');
+            tdRaw.textContent = cell.length;
+            row.appendChild(tdRaw);
+          } else {
+            // Summarized data
+            const tdAvg = document.createElement('td');
+            tdAvg.textContent = cell.average_capacity !== null ? cell.average_capacity : 'N/A';
+            row.appendChild(tdAvg);
+
+            const tdCount = document.createElement('td');
+            tdCount.textContent = cell.entry_count;
+            row.appendChild(tdCount);
+
+            const tdRaw = document.createElement('td');
+            tdRaw.textContent = 'summarized';
+            row.appendChild(tdRaw);
+          }
+          tbody.appendChild(row);
+        }
+        table.appendChild(tbody);
+        locDiv.appendChild(table);
+        contentDiv.appendChild(locDiv);
+      }
+    }
+  </script>
+</body>
+</html>
+
