@@ -37,14 +37,18 @@ def get_file_content_at_commit(commit):
     return result.stdout
 
 def process_commit(commit, agg_data):
+    content = get_file_content_at_commit(commit)
+    if not content.strip():
+        print(f"Empty content for commit {commit}, skipping.")
+        return
+
     try:
-        content = get_file_content_at_commit(commit)
         entries = json.loads(content)
     except Exception as e:
         print(f"Error processing commit {commit}: {e}")
         return
 
-    # Define the target timezone UTC+8
+    # Define the target timezone (UTC+8)
     tz_utc8 = datetime.timezone(datetime.timedelta(hours=8))
     
     for entry in entries:
@@ -52,8 +56,8 @@ def process_commit(commit, agg_data):
         if not timestamp:
             continue
 
-        # Convert the Unix timestamp (in seconds) into a datetime in UTC+8.
-        dt = datetime.datetime.fromtimestamp(timestamp, tz=tz_utc8)
+        # Convert from milliseconds to seconds and then create a datetime in UTC+8.
+        dt = datetime.datetime.fromtimestamp(timestamp / 1000, tz=tz_utc8)
         date_str = dt.strftime('%Y-%m-%d')
         name = entry.get("name", "unknown")
 
