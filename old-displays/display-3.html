@@ -27,19 +27,8 @@
     th {
       background-color: #f2f2f2;
     }
-    /* Chart container using viewport-relative widths */
     .chart-container {
       margin-bottom: 40px;
-      width: 100%;
-      max-width: 90vw; /* On narrow screens, almost full width */
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* On larger screens, constrain to a smaller percentage */
-    @media (min-width: 768px) {
-      .chart-container {
-        max-width: 70vw;
-      }
     }
   </style>
   <!-- Chart.js CDN -->
@@ -146,11 +135,10 @@
 
         const tdTime = document.createElement('td');
         if (latestEntry.timestamp) {
+          // Create a Date object and adjust for UTC+8.
           const dt = new Date(latestEntry.timestamp);
-          // Compute UTC+8 hour using UTC methods.
-          const localHour = ((dt.getUTCHours() + 8) % 24).toString().padStart(2, '0');
-          const localMinute = dt.getUTCMinutes().toString().padStart(2, '0');
-          tdTime.textContent = `${localHour}:${localMinute}`;
+          dt.setHours(dt.getHours() + 8);
+          tdTime.textContent = dt.toISOString().replace('T', ' ').substring(0, 19);
         } else {
           tdTime.textContent = latestDate;
         }
@@ -184,37 +172,35 @@
         container.appendChild(chartDiv);
 
         const datasets = [];
-        const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
         // Process each date that has raw entries
         Object.keys(gymData).forEach(date => {
           const dayData = gymData[date];
           if (!Array.isArray(dayData)) return; // Skip summarized data
 
-          // Create a 144-length array (one per 10-minute slot) filled with nulls.
+          // Initialize an array of 144 points (one per 10-minute slot)
           const dataArray = new Array(globalLabels.length).fill(null);
+          // Sort the day's entries by timestamp
           const sortedEntries = dayData.slice().sort((a, b) => a.timestamp - b.timestamp);
 
           sortedEntries.forEach(entry => {
             const dt = new Date(entry.timestamp);
-            // Compute the UTC+8 hour using UTC methods.
-            const localHour = (dt.getUTCHours() + 8) % 24;
-            const localMinutes = dt.getUTCMinutes();
-            const slotIndex = localHour * 6 + Math.floor(localMinutes / 10);
+            dt.setHours(dt.getHours() + 8); // adjust to UTC+8
+            const hours = dt.getHours();
+            const minutes = dt.getMinutes();
+            // Determine the slot index (0 to 143)
+            const slotIndex = hours * 6 + Math.floor(minutes / 10);
+            // Use the entry's capacity. (If multiple entries fall in the same slot,
+            // later ones in the sorted array will override earlier ones.)
             dataArray[slotIndex] = entry.capacity;
           });
 
-          // Create series label: include date and day-of-week.
-          const dtDate = new Date(date + "T00:00:00+08:00");
-          const dayOfWeek = weekdays[dtDate.getDay()];
-          const label = `${date} (${dayOfWeek})`;
-
           datasets.push({
-            label: label,
+            label: date,
             data: dataArray,
             fill: false,
             borderWidth: 2,
-            spanGaps: true, // Connect points even when some slots are missing data.
+            // Let Chart.js auto-assign colors.
           });
         });
 
@@ -228,7 +214,6 @@
             },
             options: {
               responsive: true,
-              maintainAspectRatio: true,
               scales: {
                 x: {
                   title: {
@@ -249,17 +234,13 @@
               plugins: {
                 legend: {
                   display: true,
-                  position: 'bottom',
-                  labels: {
-                    font: {
-                      size: 10 // Compact legend labels.
-                    }
-                  }
+                  position: 'bottom'
                 }
               }
             }
           });
         } else {
+          // In case no raw data is available for any day, show a message.
           const msg = document.createElement('p');
           msg.textContent = 'No detailed (raw) data available for charting.';
           chartDiv.appendChild(msg);

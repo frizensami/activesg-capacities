@@ -27,19 +27,12 @@
     th {
       background-color: #f2f2f2;
     }
-    /* Chart container using viewport-relative widths */
+    /* Constrain the chart container so it doesn't stretch too wide on desktop */
     .chart-container {
       margin-bottom: 40px;
-      width: 100%;
-      max-width: 90vw; /* On narrow screens, almost full width */
+      max-width: 600px; /* Adjust max-width as needed */
       margin-left: auto;
       margin-right: auto;
-    }
-    /* On larger screens, constrain to a smaller percentage */
-    @media (min-width: 768px) {
-      .chart-container {
-        max-width: 70vw;
-      }
     }
   </style>
   <!-- Chart.js CDN -->

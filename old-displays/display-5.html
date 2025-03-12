@@ -27,19 +27,12 @@
     th {
       background-color: #f2f2f2;
     }
-    /* Chart container using viewport-relative widths */
+    /* Constrain the chart container height and enable scrolling if needed */
     .chart-container {
       margin-bottom: 40px;
-      width: 100%;
-      max-width: 90vw; /* On narrow screens, almost full width */
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* On larger screens, constrain to a smaller percentage */
-    @media (min-width: 768px) {
-      .chart-container {
-        max-width: 70vw;
-      }
+      position: relative;
+      height: 300px; /* Adjust this height as needed */
+      overflow: auto;
     }
   </style>
   <!-- Chart.js CDN -->
@@ -228,7 +221,7 @@
             },
             options: {
               responsive: true,
-              maintainAspectRatio: true,
+              maintainAspectRatio: false,
               scales: {
                 x: {
                   title: {
@@ -252,7 +245,7 @@
                   position: 'bottom',
                   labels: {
                     font: {
-                      size: 10 // Compact legend labels.
+                      size: 10 // Reduce legend font size for a more compact display.
                     }
                   }
                 }
@@ -260,6 +253,7 @@
             }
           });
         } else {
+          // In case no raw data is available for any day, show a message.
           const msg = document.createElement('p');
           msg.textContent = 'No detailed (raw) data available for charting.';
           chartDiv.appendChild(msg);

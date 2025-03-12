@@ -27,19 +27,8 @@
     th {
       background-color: #f2f2f2;
     }
-    /* Chart container using viewport-relative widths */
     .chart-container {
       margin-bottom: 40px;
-      width: 100%;
-      max-width: 90vw; /* On narrow screens, almost full width */
-      margin-left: auto;
-      margin-right: auto;
-    }
-    /* On larger screens, constrain to a smaller percentage */
-    @media (min-width: 768px) {
-      .chart-container {
-        max-width: 70vw;
-      }
     }
   </style>
   <!-- Chart.js CDN -->
@@ -147,7 +136,8 @@
         const tdTime = document.createElement('td');
         if (latestEntry.timestamp) {
           const dt = new Date(latestEntry.timestamp);
-          // Compute UTC+8 hour using UTC methods.
+          // Instead of using local getHours() and shifting by 8,
+          // compute the UTC+8 hour explicitly:
           const localHour = ((dt.getUTCHours() + 8) % 24).toString().padStart(2, '0');
           const localMinute = dt.getUTCMinutes().toString().padStart(2, '0');
           tdTime.textContent = `${localHour}:${localMinute}`;
@@ -197,7 +187,7 @@
 
           sortedEntries.forEach(entry => {
             const dt = new Date(entry.timestamp);
-            // Compute the UTC+8 hour using UTC methods.
+            // Compute the UTC+8 hour using UTC methods (do not use setHours)
             const localHour = (dt.getUTCHours() + 8) % 24;
             const localMinutes = dt.getUTCMinutes();
             const slotIndex = localHour * 6 + Math.floor(localMinutes / 10);
@@ -205,6 +195,7 @@
           });
 
           // Create series label: include date and day-of-week.
+          // Parse the date string in UTC+8 by appending the offset.
           const dtDate = new Date(date + "T00:00:00+08:00");
           const dayOfWeek = weekdays[dtDate.getDay()];
           const label = `${date} (${dayOfWeek})`;
@@ -214,7 +205,7 @@
             data: dataArray,
             fill: false,
             borderWidth: 2,
-            spanGaps: true, // Connect points even when some slots are missing data.
+            spanGaps: true, // Force the line to connect across missing data.
           });
         });
 
@@ -228,7 +219,6 @@
             },
             options: {
               responsive: true,
-              maintainAspectRatio: true,
               scales: {
                 x: {
                   title: {
@@ -249,17 +239,13 @@
               plugins: {
                 legend: {
                   display: true,
-                  position: 'bottom',
-                  labels: {
-                    font: {
-                      size: 10 // Compact legend labels.
-                    }
-                  }
+                  position: 'bottom'
                 }
               }
             }
           });
         } else {
+          // In case no raw data is available for any day, show a message.
           const msg = document.createElement('p');
           msg.textContent = 'No detailed (raw) data available for charting.';
           chartDiv.appendChild(msg);

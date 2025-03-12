@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Activesg Capacities Dashboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 20px;
+    }
+    h1, h2, h3 {
+      color: #333;
+    }
+    .search-box {
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .chart-container {
+      margin-bottom: 40px;
+    }
+  </style>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>Activesg Capacities Dashboard</h1>
+  
+  <!-- Search filter -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search gyms..." />
+  </div>
+
+  <!-- Current capacities display -->
+  <h2>Current Capacities</h2>
+  <div id="currentCapacities">Loading current capacities...</div>
+
+  <!-- Historical graphs -->
+  <h2>Historical Data (Day-by-Day, 10-min Blocks)</h2>
+  <div id="historicalGraphs">Loading historical graphs...</div>
+
+  <script>
+    // URL for aggregated JSON (raw URL required)
+    const aggregatedUrl = 'https://raw.githubusercontent.com/frizensami/activesg-capacities/main/aggregated_capacities.json';
+    let aggregatedData;
+    let filteredGyms = []; // gyms matching the search
+
+    // Load aggregated data
+    fetch(aggregatedUrl)
+      .then(response => response.json())
+      .then(data => {
+        aggregatedData = data.data;
+        updateDashboard();
+      })
+      .catch(error => {
+        document.body.innerHTML = 'Error loading data: ' + error;
+      });
+
+    // Filter gyms as the user types in the search input
+    document.getElementById('searchInput').addEventListener('input', updateDashboard);
+
+    function updateDashboard() {
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+      // Filter gym names based on search
+      filteredGyms = Object.keys(aggregatedData).filter(gym => gym.toLowerCase().includes(searchQuery));
+      
+      renderCurrentCapacities();
+      renderHistoricalGraphs();
+    }
+
+    // Display current capacities in a table.
+    function renderCurrentCapacities() {
+      const container = document.getElementById('currentCapacities');
+      container.innerHTML = '';
+
+      let table = document.createElement('table');
+      let headerRow = document.createElement('tr');
+      ['Gym', 'Latest Capacity', 'Status', 'Last Update (UTC+8)'].forEach(text => {
+        let th = document.createElement('th');
+        th.textContent = text;
+        headerRow.appendChild(th);
+      });
+      table.appendChild(headerRow);
+
+      filteredGyms.forEach(gym => {
+        let gymData = aggregatedData[gym];
+        // Find the latest date available
+        let dates = Object.keys(gymData).sort();
+        let latestDate = dates[dates.length - 1];
+        let entries = gymData[latestDate];
+        let latestEntry;
+        if (Array.isArray(entries)) {
+          // If raw data, sort by timestamp and take the last entry.
+          entries.sort((a, b) => a.timestamp - b.timestamp);
+          latestEntry = entries[entries.length - 1];
+        } else {
+          // If summarized, we only have average capacity info.
+          latestEntry = { capacity: entries.average_capacity, timestamp: null, isClosed: '' };
+        }
+
+        let tr = document.createElement('tr');
+        let tdGym = document.createElement('td');
+        tdGym.textContent = gym;
+        tr.appendChild(tdGym);
+
+        let tdCapacity = document.createElement('td');
+        tdCapacity.textContent = latestEntry.capacity !== null ? latestEntry.capacity : 'N/A';
+        tr.appendChild(tdCapacity);
+
+        let tdStatus = document.createElement('td');
+        // If isClosed is the string "true", we assume it is closed.
+        tdStatus.textContent = (latestEntry.isClosed && latestEntry.isClosed === "true") ? "Closed" : "Open";
+        tr.appendChild(tdStatus);
+
+        let tdTime = document.createElement('td');
+        if (latestEntry.timestamp) {
+          // Create a Date object and adjust for UTC+8.
+          let dt = new Date(latestEntry.timestamp);
+          dt.setHours(dt.getHours() + 8);
+          tdTime.textContent = dt.toISOString().replace('T', ' ').substring(0, 19);
+        } else {
+          tdTime.textContent = latestDate;
+        }
+        tr.appendChild(tdTime);
+
+        table.appendChild(tr);
+      });
+
+      container.appendChild(table);
+    }
+
+    // Render historical graphs per gym using Chart.js.
+    function renderHistoricalGraphs() {
+      const container = document.getElementById('historicalGraphs');
+      container.innerHTML = '';
+
+      // Create a fixed set of time labels for each 10-minute block (from 00:00 to 23:50)
+      let globalLabels = [];
+      for (let h = 0; h < 24; h++) {
+        for (let m = 0; m < 60; m += 10) {
+          let hh = h.toString().padStart(2, '0');
+          let mm = m.toString().padStart(2, '0');
+          globalLabels.push(`${hh}:${mm}`);
+        }
+      }
+
+      filteredGyms.forEach(gym => {
+        let gymData = aggregatedData[gym];
+
+        // Create a container for the chart
+        const chartDiv = document.createElement('div');
+        chartDiv.className = 'chart-container';
+        const gymHeader = document.createElement('h3');
+        gymHeader.textContent = gym;
+        chartDiv.appendChild(gymHeader);
+
+        let canvas = document.createElement('canvas');
+        canvas.id = 'chart_' + gym.replace(/\s+/g, '_');
+        chartDiv.appendChild(canvas);
+        container.appendChild(chartDiv);
+
+        let datasets = [];
+        // Process each day that has raw entries (an array)
+        Object.keys(gymData).forEach(date => {
+          let dayData = gymData[date];
+          if (!Array.isArray(dayData)) return; // Skip summarized days
+
+          // Create a mapping from time-of-day (HH:MM) to capacity.
+          let timeMapping = {};
+          dayData.forEach(entry => {
+            let dt = new Date(entry.timestamp);
+            dt.setHours(dt.getHours() + 8); // adjust to UTC+8
+            let hh = dt.getHours().toString().padStart(2, '0');
+            let mm = dt.getMinutes().toString().padStart(2, '0');
+            let timeStr = `${hh}:${mm}`;
+            // If multiple entries exist for the same time, override with the latest entry.
+            timeMapping[timeStr] = entry.capacity;
+          });
+
+          // Build an array of data points for this day, aligned with the global time slots.
+          let dataArray = globalLabels.map(time => (time in timeMapping ? timeMapping[time] : null));
+
+          datasets.push({
+            label: date,
+            data: dataArray,
+            fill: false,
+            borderWidth: 2,
+          });
+        });
+
+        new Chart(canvas.getContext('2d'), {
+          type: 'line',
+          data: {
+            labels: globalLabels,
+            datasets: datasets
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                title: {
+                  display: true,
+                  text: 'Time of Day (UTC+8)'
+                },
+                ticks: {
+                  maxTicksLimit: 12
+                }
+              },
+              y: {
+                title: {
+                  display: true,
+                  text: 'Capacity'
+                }
+              }
+            },
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom'
+              }
+            }
+          }
+        });
+      });
+    }
+  </script>
+</body>
+</html>
+
