@@ -1,8 +1,6 @@
 name: Aggregate Capacities Data
 
 on:
-  schedule:
-    - cron: '0 22-23,0-15 * * *'   # Runs daily at midnight UTC
   workflow_dispatch:       # Also allow manual triggering
 
 jobs:
