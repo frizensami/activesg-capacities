@@ -1,359 +1,359 @@
 [
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Sengkang Swimming Complex",
     "isClosed": "false",
     "capacity": 3
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jalan Besar Swimming Complex",
     "isClosed": "false",
     "capacity": 13
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Heartbeat @ Bedok ActiveSG Swimming Complex",
-    "isClosed": "false",
-    "capacity": 8
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Tampines Swimming Complex",
-    "isClosed": "false",
-    "capacity": 7
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Geylang East Swimming Complex",
     "isClosed": "false",
     "capacity": 4
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Tampines Swimming Complex",
+    "isClosed": "false",
+    "capacity": 3
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Geylang East Swimming Complex",
+    "isClosed": "false",
+    "capacity": 1
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Yishun Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Woodlands Swimming Complex",
     "isClosed": "false",
-    "capacity": 11
+    "capacity": 4
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Clementi Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jurong Lake Gardens Pool",
     "isClosed": "false",
-    "capacity": 14
+    "capacity": 9
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Delta Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jurong West Swimming Complex",
     "isClosed": "false",
-    "capacity": 11
+    "capacity": 5
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Choa Chu Kang Swimming Complex",
     "isClosed": "false",
-    "capacity": 11
+    "capacity": 5
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Pasir Ris Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Senja-Cashew Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bukit Canberra Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Katong Swimming Complex",
     "isClosed": "false",
     "capacity": 5
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bukit Batok Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Serangoon Swimming Complex",
     "isClosed": "false",
-    "capacity": 6
+    "capacity": 3
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bishan Swimming Complex",
     "isClosed": "false",
-    "capacity": 5
+    "capacity": 3
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jurong East Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "MOE (Evans) Swimming Complex",
+    "isClosed": "false",
+    "capacity": 0
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Yio Chu Kang Swimming Complex",
     "isClosed": "false",
     "capacity": 1
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Yio Chu Kang Swimming Complex",
-    "isClosed": "false",
-    "capacity": 5
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Kallang Basin Swimming Complex",
     "isClosed": "false",
     "capacity": 0
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "ActiveSG Gym @ Ang Mo Kio CC",
     "isClosed": "false",
-    "capacity": 51
+    "capacity": 53
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bukit Gombak ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 54
+    "capacity": 64
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "ActiveSG Hockey Village @ Boon Lay Gym",
     "isClosed": "false",
-    "capacity": 44
+    "capacity": 39
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Kallang Basin ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 54
+    "capacity": 27
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Katong ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 66
+    "capacity": 64
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bukit Canberra ActiveSG Gym",
     "isClosed": "false",
     "capacity": 67
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Bishan ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 98
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Bukit Batok ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 57
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Sengkang ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 86
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "ActiveSG Gym @ Fernvale Square",
-    "isClosed": "false",
-    "capacity": 58
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Pasir Ris ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 43
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Enabling Village ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 11
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Delta ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 72
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Clementi ActiveSG Gym",
     "isClosed": "false",
     "capacity": 81
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Bukit Batok ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 52
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Sengkang ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 77
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "ActiveSG Gym @ Fernvale Square",
+    "isClosed": "false",
+    "capacity": 75
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Pasir Ris ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 38
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Enabling Village ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 13
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Delta ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 58
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Clementi ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 57
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jalan Besar ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 54
+    "capacity": 47
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "ActiveSG Gym @ Serangoon Central",
     "isClosed": "false",
-    "capacity": 60
+    "capacity": 40
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "ActiveSG Gym @ Toa Payoh West CC",
-    "isClosed": "false",
-    "capacity": 28
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Yio Chu Kang ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 43
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "ActiveSG Gym @ Toa Payoh",
-    "isClosed": "false",
-    "capacity": 64
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Yishun ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 39
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Tampines ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 45
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Senja-Cashew Gym",
-    "isClosed": "false",
-    "capacity": 80
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Heartbeat @ Bedok ActiveSG Gym",
-    "isClosed": "false",
-    "capacity": 49
-  },
-  {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
-    "name": "Jurong Lake Gardens Gym",
     "isClosed": "false",
     "capacity": 36
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Yio Chu Kang ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 41
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "ActiveSG Gym @ Toa Payoh",
+    "isClosed": "false",
+    "capacity": 63
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Yishun ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 31
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Tampines ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 52
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Senja-Cashew Gym",
+    "isClosed": "false",
+    "capacity": 55
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Heartbeat @ Bedok ActiveSG Gym",
+    "isClosed": "false",
+    "capacity": 54
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
+    "name": "Jurong Lake Gardens Gym",
+    "isClosed": "false",
+    "capacity": 31
+  },
+  {
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Choa Chu Kang ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 71
+    "capacity": 66
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Woodlands ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 68
+    "capacity": 64
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jurong West ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 43
+    "capacity": 44
   },
   {
-    "timestamp": 1746620014526,
-    "human_timestamp": "07/05/2025, 8:13:34 pm",
+    "timestamp": 1746622440677,
+    "human_timestamp": "07/05/2025, 8:54:00 pm",
     "name": "Jurong East ActiveSG Gym",
     "isClosed": "false",
-    "capacity": 57
+    "capacity": 47
   }
 ]
